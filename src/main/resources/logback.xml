@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%method:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="experiment" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/atspace.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/history/experiment/experiment.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%method:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.threadblocked" level="TRACE" additivity="false">
+        <appender-ref ref="experiment"/>
+    </logger>
+    <logger name="org.springframework.web.servlet.mvc" level="info" additivity="false">
+        <appender-ref ref="experiment"/>
+    </logger>
+
+
+    <!-- druid loggers -->
+    <logger name="druid.sql.DataSource" level="TRACE" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="druid.sql.Connection" level="TRACE" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="druid.sql.Statement" level="TRACE" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="druid.sql.ResultSet" level="TRACE" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
