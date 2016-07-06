@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -29,8 +30,9 @@ import java.util.Map;
 /**
  * Created by ArthurTsang on 7/4/16.
  */
-@RequestMapping(value = "/hello")
 @Controller
+@RequestMapping(value = "/hello")
+@SessionAttributes("aaa")
 public class HelloWorldController {
 
     /**
@@ -99,6 +101,7 @@ public class HelloWorldController {
     @RequestMapping(value = "/something3")
     public void hello5(ModelMap model){
         System.out.println(model.get("aaa"));
+        model.addAttribute("aaa",222);
     }
     /**
      * 使用ModelAttribute 获得数据
@@ -152,11 +155,12 @@ public class HelloWorldController {
         System.out.println(JSESSIONID);
     }
 
-
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
+
+
 }
