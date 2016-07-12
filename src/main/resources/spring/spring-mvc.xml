@@ -36,9 +36,13 @@
 
     <!--内容协商管理器-->
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        <property name="favorPathExtension" value="false" />
+        <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+        <property name="favorPathExtension" value="true" />
+        <!-- 用于开启 /userinfo/123?format=json 的支持 -->
         <property name="favorParameter" value="true" />
+        <!--默认类型-->
         <property name="defaultContentType" value="text/html" />
+        <!-- 是否忽略Accept Header -->
         <property name="ignoreAcceptHeader" value="true" />
         <property name="mediaTypes" >
             <map>
