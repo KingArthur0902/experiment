@@ -25,4 +25,52 @@
 
     </mvc:annotation-driven>
 
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--一个小小的判断时间的拦截器-->
+        <bean class="com.threadblocked.experiment.spring.common.interceptor.TimeBasedAccessInterceptor">
+            <property name="openingTime" value="9"></property>
+            <property name="closingTime" value="18"></property>
+        </bean>
+    </mvc:interceptors>
+
+    <!--内容协商管理器-->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="false" />
+        <property name="favorParameter" value="true" />
+        <property name="defaultContentType" value="text/html" />
+        <property name="ignoreAcceptHeader" value="true" />
+        <property name="mediaTypes" >
+            <map>
+                <entry key="json" value="application/json"/>
+                <entry key="xml" value="application/xml"/>
+                <entry key="at" value="text/html"/>
+                <entry key="bin" value="text/html"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--内容协商视图解析器-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <!--定义内容协商管理器，管理mediaType-->
+        <property name="contentNegotiationManager" ref="contentNegotiationManager" />
+        <!--定义视图解析器-->
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+                    <property name="prefix" value="/template/atspace/" />
+                    <property name="suffix" value=".jsp" />
+                </bean>
+            </list>
+        </property>
+        <!--定义默认视图解析器-->
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+            </list>
+        </property>
+    </bean>
+
+
 </beans>
