@@ -12,6 +12,7 @@
         <spring.version>4.2.4.RELEASE</spring.version>
         <slf4j.version>1.7.13</slf4j.version>
         <logback.version>1.1.3</logback.version>
+        <jackson.version>2.4.6</jackson.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,33 @@
             <scope>runtime</scope>
         </dependency>
         <!--log end-->
+
+        <!-- JSON begin -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- JSON end -->
+
+        <!-- File Upload start-->
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <!-- File Upload end-->
 
         <dependency>
             <groupId>junit</groupId>

@@ -3,7 +3,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
@@ -30,7 +30,7 @@
         <!--一个小小的判断时间的拦截器-->
         <bean class="com.threadblocked.experiment.spring.common.interceptor.TimeBasedAccessInterceptor">
             <property name="openingTime" value="9"></property>
-            <property name="closingTime" value="18"></property>
+            <property name="closingTime" value="23"></property>
         </bean>
     </mvc:interceptors>
 
@@ -62,10 +62,10 @@
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-                    <property name="prefix" value="/template/atspace/" />
-                    <property name="suffix" value=".jsp" />
-                </bean>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+                      p:prefix="/template/atspace/"
+                      p:suffix=".jsp"
+                />
             </list>
         </property>
         <!--定义默认视图解析器-->
@@ -75,6 +75,14 @@
             </list>
         </property>
     </bean>
+
+    <!--异常解析器-->
+    <!--使用ExceptionHandler就不用定义这个了-->
+    <!--  <bean id="" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"
+          p:contentNegotiationManager-ref="contentNegotiationManager"/>
+    -->
+    <!--文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="10485760"/>
 
 
 </beans>

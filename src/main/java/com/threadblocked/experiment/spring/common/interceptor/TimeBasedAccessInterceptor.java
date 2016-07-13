@@ -19,7 +19,8 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) throws Exception{
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        if(openingTime <= hour && hour < closingTime){
+
+        if( openingTime <= hour && hour <= closingTime){
             return true;
         }
         response.sendRedirect("http://www.google.com");
