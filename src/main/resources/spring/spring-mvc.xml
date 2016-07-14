@@ -12,16 +12,16 @@
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
        ">
 
-    <context:component-scan base-package="com.threadblocked.experiment.**.controller" >
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    <context:component-scan base-package="com.threadblocked.experiment.**.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
     <!--
         默认注册：RequestMappingHandlerMapping 和 RequestMappingHandlerAdapter
         等(waiting to add)
     -->
-    <mvc:annotation-driven enable-matrix-variables="true" >
+    <mvc:annotation-driven enable-matrix-variables="true">
 
     </mvc:annotation-driven>
 
@@ -37,14 +37,14 @@
     <!--内容协商管理器-->
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
-        <property name="favorPathExtension" value="true" />
+        <property name="favorPathExtension" value="true"/>
         <!-- 用于开启 /userinfo/123?format=json 的支持 -->
-        <property name="favorParameter" value="true" />
+        <property name="favorParameter" value="true"/>
         <!--默认类型-->
-        <property name="defaultContentType" value="text/html" />
+        <property name="defaultContentType" value="text/html"/>
         <!-- 是否忽略Accept Header -->
-        <property name="ignoreAcceptHeader" value="true" />
-        <property name="mediaTypes" >
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="mediaTypes">
             <map>
                 <entry key="json" value="application/json"/>
                 <entry key="xml" value="application/xml"/>
@@ -57,11 +57,11 @@
     <!--内容协商视图解析器-->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <!--定义内容协商管理器，管理mediaType-->
-        <property name="contentNegotiationManager" ref="contentNegotiationManager" />
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
         <!--定义视图解析器-->
         <property name="viewResolvers">
             <list>
-                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
                 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
                       p:prefix="/template/atspace/"
                       p:suffix=".jsp"
@@ -71,16 +71,16 @@
         <!--定义默认视图解析器-->
         <property name="defaultViews">
             <list>
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
             </list>
         </property>
     </bean>
 
-    <!--异常解析器-->
-    <!--使用ExceptionHandler就不用定义这个了-->
-    <!--  <bean id="" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"
+    <!--异常解析器，用以支持@ExceptionHandler-->
+    <!--默认mvc：annotation 会注册一个ExceptionHandlerExceptionResolver-->
+    <bean id="" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"
           p:contentNegotiationManager-ref="contentNegotiationManager"/>
-    -->
+
     <!--文件上传解析器-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="10485760"/>
 
