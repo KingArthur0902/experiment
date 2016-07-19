@@ -51,7 +51,7 @@ public class HelloWorldController {
      * @param id
      */
     @RequestMapping(value = "/{id}")
-    public void hello1(@PathVariable String id) {
+    public void hello1(@PathVariable Integer id) {
         System.out.println("id : " + id);
     }
 

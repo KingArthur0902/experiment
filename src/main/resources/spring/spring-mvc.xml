@@ -21,9 +21,16 @@
         默认注册：RequestMappingHandlerMapping 和 RequestMappingHandlerAdapter
         等(waiting to add)
     -->
-    <mvc:annotation-driven enable-matrix-variables="true">
+    <mvc:annotation-driven
+            enable-matrix-variables="true"
+            conversion-service="conversionService"
+            content-negotiation-manager="contentNegotiationManager"
+            >
 
     </mvc:annotation-driven>
+
+    <!--mvc:annotation-driven 默认已经注册此bean-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
 
     <!--拦截器-->
     <mvc:interceptors>
