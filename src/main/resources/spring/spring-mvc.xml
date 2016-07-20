@@ -25,9 +25,14 @@
             enable-matrix-variables="true"
             conversion-service="conversionService"
             content-negotiation-manager="contentNegotiationManager"
+            validator="validator"
             >
 
     </mvc:annotation-driven>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+    </bean>
 
     <!--mvc:annotation-driven 默认已经注册此bean-->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
