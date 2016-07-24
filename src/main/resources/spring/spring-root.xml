@@ -6,7 +6,10 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd
-                           ">
+                           "
+        default-init-method="init"
+       default-destroy-method="ddd"
+        >
 
     <!--自动检测含有注解的bean，除了controller 和 controllerAdvice-->
     <context:component-scan base-package="com.threadblocked.experiment">
