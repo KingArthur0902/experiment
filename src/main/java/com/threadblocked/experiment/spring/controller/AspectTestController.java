@@ -24,5 +24,13 @@ public class AspectTestController {
     public void testAspect2(){
         aspectTestSerivce.testAround();
     }
+    @RequestMapping(value = "test3")
+    public void testAspect3(){
+        aspectTestSerivce.testXmlAspect();
+    }
+    @RequestMapping(value = "test4")
+    public void testAspect4(){
+        aspectTestSerivce.testXmlAround();
+    }
 
 }

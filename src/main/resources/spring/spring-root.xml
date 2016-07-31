@@ -23,4 +23,20 @@
     <!--开启@AspectJ支持-->
     <aop:aspectj-autoproxy />
 
+    <!--基于xml配置的aop-->
+    <aop:config >
+        <aop:aspect id="apectXml" ref="aspectXmlTest">
+            <!--定义一个可复用的pointcut-->
+            <aop:pointcut id="aspectXmlPc" expression="execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testXmlAspect(..))" />
+            <!--定义advice-->
+            <aop:before pointcut-ref="aspectXmlPc"  method="xmlBeforeTest" />
+            <aop:after-returning method="xmlAfterReturning" pointcut-ref="aspectXmlPc"/>
+            <aop:after method="xmlAfter" pointcut-ref="aspectXmlPc" />
+            <aop:after-throwing method="xmlThrowNpe" pointcut-ref="aspectXmlPc" throwing="npe" />
+
+            <aop:around method="xmlAround" pointcut="execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testXmlAround(..))" />
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="aspectXmlTest" class="com.threadblocked.experiment.spring.aop.AspectXmlTest"/>
 </beans>

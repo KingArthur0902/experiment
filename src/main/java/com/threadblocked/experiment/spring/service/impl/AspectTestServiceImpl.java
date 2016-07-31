@@ -21,4 +21,14 @@ public class AspectTestServiceImpl implements AspectTestSerivce {
     public void testAround(){
         System.out.println("now, this is business logic: around around around");
     }
+
+    @Override
+    public void testXmlAspect(){
+        System.out.println("now, this is business logic: xml xml xml");
+    }
+
+    @Override
+    public void testXmlAround(){
+        System.out.println("now, this is business logic: xml around around");
+    }
 }

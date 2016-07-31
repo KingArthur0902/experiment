@@ -8,4 +8,8 @@ public interface AspectTestSerivce {
     void testAspect();
 
     void testAround();
+
+    void testXmlAspect();
+
+    void testXmlAround();
 }
