@@ -141,12 +141,20 @@
         </dependency>
         <!--temp end-->
 
+        <!--test start-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!--test end-->
     </dependencies>
 
     <dependencyManagement>
