@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.aop;
+package com.threadblocked.experiment.module.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -22,7 +22,7 @@ public class AspectJAnotationTest {
      * pointcut : 指的是目标业务逻辑，可以理解为目标类的方法，可以用*号匹配多个方法
      * 定义公用pointcut 来给其他advice共用和combine
      */
-    @Pointcut("execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testAspect(..))")
+    @Pointcut("execution(* com.threadblocked.experiment.module.spring.service.impl.AspectTestServiceImpl.testAspect(..))")
     public void servicePointCut(){}
 
     /**
@@ -54,7 +54,7 @@ public class AspectJAnotationTest {
 
     //joinpoint 包含了目标业务逻辑的所有信息，所以可以在调用proceed(执行目标业务逻辑方法)前后进行增强逻辑
     //可以直接传pointcut
-    @Around("execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testAround(..))")
+    @Around("execution(* com.threadblocked.experiment.module.spring.service.impl.AspectTestServiceImpl.testAround(..))")
     public Object aroundService(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("pjp  start ---------------");
         Object rtv = pjp.proceed();

@@ -4,7 +4,7 @@
        xsi:schemaLocation="
               http://www.springframework.org/schema/beans
               http://www.springframework.org/schema/beans/spring-beans.xsd"
-
+       default-autowire="byName"
        default-lazy-init="false">
        
    <!--    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">

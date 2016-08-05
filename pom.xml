@@ -17,6 +17,9 @@
         <hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
         <aspectj.version>1.7.4</aspectj.version>
         <druid.version>1.0.20</druid.version>
+        <hibernate.version>5.0.7.Final</hibernate.version>
+        <mysql.connector>5.1.38</mysql.connector>
+        <ehcache.core.version>2.6.11</ehcache.core.version>
     </properties>
 
     <dependencies>
@@ -91,9 +94,51 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector}</version>
+        </dependency>
         <!--datasource end-->
 
+        <!--cache start-->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ehcache-core</artifactId>
+                    <groupId>net.sf.ehcache</groupId>
+                </exclusion>
+
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${ehcache.core.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--cache end-->
 
         <!--log start-->
         <dependency>

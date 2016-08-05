@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.service;
+package com.threadblocked.experiment.module.spring.service;
 
 import com.threadblocked.experiment.base.BaseTest;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
 import com.threadblocked.experiment.base.BaseTest;
 import org.junit.Before;

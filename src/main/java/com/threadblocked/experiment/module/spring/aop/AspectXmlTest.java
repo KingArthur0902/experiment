@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.aop;
+package com.threadblocked.experiment.module.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 

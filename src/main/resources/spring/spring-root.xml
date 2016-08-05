@@ -10,9 +10,11 @@
                            http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop.xsd
                            "
-        default-init-method="init"
-       default-destroy-method="ddd"
+           default-init-method="init"
+        default-destroy-method="ddd"
         >
+
+    <context:property-placeholder ignore-resource-not-found="true" location="classpath*:appConfig.properties" />
 
     <!--自动检测含有注解的bean，除了controller 和 controllerAdvice-->
     <context:component-scan base-package="com.threadblocked.experiment">
@@ -27,18 +29,18 @@
     <aop:config >
         <aop:aspect id="apectXml" ref="aspectXmlTest">
             <!--定义一个可复用的pointcut-->
-            <aop:pointcut id="aspectXmlPc" expression="execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testXmlAspect(..))" />
+            <aop:pointcut id="aspectXmlPc" expression="execution(* com.threadblocked.experiment.module.spring.service.impl.AspectTestServiceImpl.testXmlAspect(..))" />
             <!--定义advice-->
             <aop:before pointcut-ref="aspectXmlPc"  method="xmlBeforeTest" />
             <aop:after-returning method="xmlAfterReturning" pointcut-ref="aspectXmlPc"/>
             <aop:after method="xmlAfter" pointcut-ref="aspectXmlPc" />
             <aop:after-throwing method="xmlThrowNpe" pointcut-ref="aspectXmlPc" throwing="npe" />
 
-            <aop:around method="xmlAround" pointcut="execution(* com.threadblocked.experiment.spring.service.impl.AspectTestServiceImpl.testXmlAround(..))" />
+            <aop:around method="xmlAround" pointcut="execution(* com.threadblocked.experiment.module.spring.service.impl.AspectTestServiceImpl.testXmlAround(..))" />
         </aop:aspect>
     </aop:config>
 
-    <bean id="aspectXmlTest" class="com.threadblocked.experiment.spring.aop.AspectXmlTest"/>
+    <bean id="aspectXmlTest" class="com.threadblocked.experiment.module.spring.aop.AspectXmlTest"/>
 
 
 </beans>
