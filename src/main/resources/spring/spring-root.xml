@@ -39,4 +39,6 @@
     </aop:config>
 
     <bean id="aspectXmlTest" class="com.threadblocked.experiment.spring.aop.AspectXmlTest"/>
+
+
 </beans>

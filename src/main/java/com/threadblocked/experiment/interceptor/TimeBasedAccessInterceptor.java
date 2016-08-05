@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.common.interceptor;
+package com.threadblocked.experiment.interceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

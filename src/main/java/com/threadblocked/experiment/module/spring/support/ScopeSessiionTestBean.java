@@ -1,15 +1,15 @@
-package com.threadblocked.experiment.spring.support;
+package com.threadblocked.experiment.module.spring.support;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by ArthurTsang on 7/24/16.
  */
-@Scope("prototype")
+@Scope(value = "session",proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Component
-public class ScopeProtoTypeTestBean {
-
+public class ScopeSessiionTestBean {
     private Integer count = 0;
 
     public Integer getCount() {

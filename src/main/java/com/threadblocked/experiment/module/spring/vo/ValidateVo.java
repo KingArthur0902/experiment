@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.vo;
+package com.threadblocked.experiment.module.spring.vo;
 
 import javax.validation.constraints.NotNull;
 

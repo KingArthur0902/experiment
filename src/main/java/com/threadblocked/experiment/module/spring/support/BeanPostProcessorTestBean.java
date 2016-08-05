@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.support;
+package com.threadblocked.experiment.module.spring.support;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

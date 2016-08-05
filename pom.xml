@@ -16,6 +16,7 @@
         <jackson.version>2.4.6</jackson.version>
         <hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
         <aspectj.version>1.7.4</aspectj.version>
+        <druid.version>1.0.20</druid.version>
     </properties>
 
     <dependencies>
@@ -47,6 +48,11 @@
         <!--web end-->
 
         <!--spring dependency begin-->
+
+
+        <!--spring dependency end-->
+
+        <!--aop start-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -58,11 +64,38 @@
             <version>${aspectj.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!--aop end-->
 
-        <!--spring dependency end-->
+        <!--transation start-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <!--transation end-->
+
+        <!--datasource start-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+
+        <!--datasource end-->
+
 
         <!--log start-->
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -127,16 +160,17 @@
         <!-- File Upload end-->
 
         <!--temp start-->
-     <!--   <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.9.4</version>
-        </dependency>-->
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jboss-logging</artifactId>
+                    <groupId>org.jboss.logging</groupId>
+                </exclusion>
+            </exclusions>
 
         </dependency>
         <!--temp end-->

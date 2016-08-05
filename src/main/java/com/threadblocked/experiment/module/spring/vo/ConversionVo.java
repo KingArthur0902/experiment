@@ -1,5 +1,4 @@
-package com.threadblocked.experiment.spring.vo;
-
+package com.threadblocked.experiment.module.spring.vo;
 
 import java.util.Date;
 

@@ -40,7 +40,7 @@
     <!--拦截器-->
     <mvc:interceptors>
         <!--一个小小的判断时间的拦截器-->
-        <bean class="com.threadblocked.experiment.spring.common.interceptor.TimeBasedAccessInterceptor">
+        <bean class="com.threadblocked.experiment.interceptor.TimeBasedAccessInterceptor">
             <property name="openingTime" value="9"></property>
             <property name="closingTime" value="23"></property>
         </bean>

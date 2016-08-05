@@ -1,12 +1,14 @@
-package com.threadblocked.experiment.spring.support;
+package com.threadblocked.experiment.module.spring.support;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by ArthurTsang on 7/24/16.
  */
+@Scope("prototype")
 @Component
-public class ScopeSingletonTestBean {
+public class ScopeProtoTypeTestBean {
 
     private Integer count = 0;
 

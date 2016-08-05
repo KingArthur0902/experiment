@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.service;
+package com.threadblocked.experiment.module.spring.service;
 
 /**
  * Created by ArthurTsang on 8/3/16.

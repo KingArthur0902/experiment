@@ -1,6 +1,6 @@
-package com.threadblocked.experiment.spring.service.impl;
+package com.threadblocked.experiment.module.spring.service.impl;
 
-import com.threadblocked.experiment.spring.service.AspectTestSerivce;
+import com.threadblocked.experiment.module.spring.service.AspectTestSerivce;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,6 +1,6 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
-import com.threadblocked.experiment.spring.vo.ValidateVo;
+import com.threadblocked.experiment.module.spring.vo.ValidateVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;

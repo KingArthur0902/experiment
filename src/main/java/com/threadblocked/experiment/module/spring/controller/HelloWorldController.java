@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpEntity;

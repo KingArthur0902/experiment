@@ -1,4 +1,4 @@
-package com.threadblocked.experiment.spring.support;
+package com.threadblocked.experiment.module.spring.support;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

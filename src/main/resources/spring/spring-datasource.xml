@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+              http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+       default-lazy-init="false">
+       
+   <!--    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+              <property name="driverClassName" value="${app.dataSource.driver}" />
+              <property name="url" value="${app.dataSource.driverUrl}" />
+              <property name="username" value="${app.dataSource.username}" />
+              <property name="password" value="${app.dataSource.password}" />
+              <property name="poolPreparedStatements" >
+                     <value>false</value>
+              </property>
+              <property name="maxTotal" value="${app.dataSource.maxConnectionCount}" />
+              <property name="minIdle" value="${app.dataSource.minConnectionCount}"/>
+              <property name="defaultAutoCommit">
+                     <value>true</value>
+              </property>
+       </bean>-->
+
+       <!-- 数据源配置, 使用Druid连接池 -->
+       <bean id="dataSource"  class="com.alibaba.druid.pool.DruidDataSource"
+             init-method="init" destroy-method="close">
+              <!-- 基本属性 url、user、password -->
+              <property name="url" value="${app.dataSource.driverUrl}" />
+              <property name="username" value="${app.dataSource.username}" />
+              <property name="password" value="${app.dataSource.password}" />
+
+              <!-- 配置初始化大小、最小、最大 -->
+              <property name="initialSize" value="${druid.initialSize}" />
+              <property name="minIdle" value="${druid.minIdle}" />
+              <property name="maxActive" value="${druid.maxActive}" />
+
+              <!-- 配置获取连接等待超时的时间 -->
+              <property name="maxWait" value="${druid.maxWait}" />
+              <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+              <property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
+
+              <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+              <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
+
+              <property name="validationQuery" value="${druid.validationQuery}" />
+              <property name="testWhileIdle" value="${druid.testWhileIdle}" />
+              <property name="testOnBorrow" value="${druid.testOnBorrow}" />
+              <property name="testOnReturn" value="${druid.testOnReturn}" />
+
+              <!-- 打开PSCache，并且指定每个连接上PSCache的大小 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。 -->
+              <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}" />
+              <property name="maxPoolPreparedStatementPerConnectionSize"
+                        value="${druid.maxPoolPreparedStatementPerConnectionSize}" />
+
+              <!-- 配置监控统计拦截的filters -->
+              <property name="filters" value="stat" />
+              <property name="proxyFilters">
+                     <list>
+                            <ref bean="wallFilter" />
+                            <ref bean="logFilter" />
+                     </list>
+              </property>
+       </bean>
+
+       <bean id="wallFilterConfig" class="com.alibaba.druid.wall.WallConfig"
+             init-method="init">
+              <!-- 指定配置装载的目录 -->
+              <property name="dir" value="META-INF/druid/wall/mysql" />
+              <!-- 允许使用SET语法 -->
+              <property name="setAllow" value="true" />
+              <property name="strictSyntaxCheck" value="false" />
+       </bean>
+
+       <bean id="wallFilter" class="com.alibaba.druid.wall.WallFilter">
+              <property name="dbType" value="mysql" />
+              <property name="config" ref="wallFilterConfig" />
+       </bean>
+
+       <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+              <property name="resultSetLogEnabled" value="false" />
+              <!-- 输出可执行的SQL -->
+              <property name="statementExecutableSqlLogEnable" value="true" />
+              <property name="statementExecuteAfterLogEnabled" value="false" />
+              <property name="statementExecuteBatchAfterLogEnabled" value="false" />
+              <property name="statementExecuteQueryAfterLogEnabled" value="false" />
+              <property name="statementExecuteUpdateAfterLogEnabled" value="false" />
+              <!-- 只输出提交和回滚日志 -->
+              <property name="connectionCommitAfterLogEnabled" value="true" />
+              <property name="connectionRollbackAfterLogEnabled" value="true" />
+              <property name="connectionConnectBeforeLogEnabled" value="false" />
+              <property name="connectionConnectAfterLogEnabled" value="false" />
+              <property name="connectionCloseAfterLogEnabled" value="false" />
+              <!-- 执行前打印SQL参数，可执行的SQL当执行异常时不会输出 -->
+              <property name="statementParameterSetLogEnabled" value="true" />
+              <property name="statementParameterClearLogEnable" value="false" />
+              <property name="statementCreateAfterLogEnabled" value="false" />
+              <property name="statementPrepareAfterLogEnabled" value="false" />
+              <property name="statementPrepareCallAfterLogEnabled" value="false" />
+              <property name="statementCloseAfterLogEnabled" value="false" />
+       </bean>
+       
+</beans>

@@ -1,6 +1,6 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
-import com.threadblocked.experiment.spring.vo.ConversionVo;
+import com.threadblocked.experiment.module.spring.vo.ConversionVo;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;

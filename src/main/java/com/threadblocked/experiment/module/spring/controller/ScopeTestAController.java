@@ -1,9 +1,9 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
-import com.threadblocked.experiment.spring.support.ScopeProtoTypeTestBean;
-import com.threadblocked.experiment.spring.support.ScopeRequestTestBean;
-import com.threadblocked.experiment.spring.support.ScopeSessiionTestBean;
-import com.threadblocked.experiment.spring.support.ScopeSingletonTestBean;
+import com.threadblocked.experiment.module.spring.support.ScopeProtoTypeTestBean;
+import com.threadblocked.experiment.module.spring.support.ScopeRequestTestBean;
+import com.threadblocked.experiment.module.spring.support.ScopeSessiionTestBean;
+import com.threadblocked.experiment.module.spring.support.ScopeSingletonTestBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;

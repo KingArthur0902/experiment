@@ -1,6 +1,6 @@
-package com.threadblocked.experiment.spring.controller;
+package com.threadblocked.experiment.module.spring.controller;
 
-import com.threadblocked.experiment.spring.service.AspectTestSerivce;
+import com.threadblocked.experiment.module.spring.service.AspectTestSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
