@@ -40,6 +40,7 @@
         </aop:aspect>
     </aop:config>
 
+    <!--定义一个测试切面-->
     <bean id="aspectXmlTest" class="com.threadblocked.experiment.module.spring.aop.AspectXmlTest"/>
 
 </beans>
