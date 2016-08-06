@@ -42,5 +42,4 @@
 
     <bean id="aspectXmlTest" class="com.threadblocked.experiment.module.spring.aop.AspectXmlTest"/>
 
-
 </beans>

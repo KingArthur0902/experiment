@@ -104,6 +104,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector}</version>
         </dependency>
+
         <!--datasource end-->
 
         <!--cache start-->
