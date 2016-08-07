@@ -13,4 +13,6 @@ public interface JdbcTestService {
     void getUser(Integer id);
 
     void getUsers();
+
+    void addUser();
 }

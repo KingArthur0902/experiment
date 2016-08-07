@@ -44,4 +44,9 @@ public class JdbcTestServiceImpl implements JdbcTestService {
         List<SysUser> users = jdbcTestDao.getUsers();
         System.out.println("size: " + users == null ? "null" : users.size());
     }
+
+    @Override
+    public void addUser(){
+        jdbcTestDao.addUser();
+    }
 }

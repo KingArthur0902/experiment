@@ -3,9 +3,14 @@ package com.threadblocked.experiment.module.spring.dao;
 import com.threadblocked.experiment.module.spring.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -37,6 +42,19 @@ public class JdbcTestDao {
 
     public List<SysUser> getUsers(){
         return this.jdbcTemplate.query("select * from sys_user",new SysUserMapper());
+    }
+
+    public void addUser(){
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO sys_user (user_name, password) VALUES (?,?)",new String[]{"sys_user_id"});
+                ps.setString(1,"eee");
+                ps.setString(2,"eee");
+                return ps;
+            }
+        });
     }
 
     private static final class SysUserMapper implements RowMapper<SysUser>{

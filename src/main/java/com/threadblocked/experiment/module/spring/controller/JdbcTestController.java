@@ -40,4 +40,9 @@ public class JdbcTestController {
     public void getUsers(){
         jdbcTestService.getUsers();
     }
+
+    @RequestMapping(value = "/user/add")
+    public void addUser(){
+        jdbcTestService.addUser();
+    }
 }
