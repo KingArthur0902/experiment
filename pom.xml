@@ -22,6 +22,8 @@
         <ehcache.core.version>2.6.11</ehcache.core.version>
     </properties>
 
+
+
     <dependencies>
 
         <!--web begin-->
@@ -51,7 +53,10 @@
         <!--web end-->
 
         <!--spring dependency begin-->
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
 
         <!--spring dependency end-->
 
@@ -235,6 +240,18 @@
             <scope>test</scope>
         </dependency>
         <!--test end-->
+
+
+        <!--email start-->
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!--email end-->
+
     </dependencies>
 
     <dependencyManagement>
@@ -267,6 +284,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
 
     </repositories>
 
